@@ -12,6 +12,7 @@ Esta parte de la programación no está pensada tanto para el usuario, sino para
 - **Estados de Error del Servidor**
 **Error 400:** 
 El Error 400 Bad Request significa literalmente Petición o Solicitud Incorrecta y principalmente se debe a discrepancias entre servidor y cliente. En otras palabras, nuestro ordenador (el cliente) ha sido incapaz de comunicarse satisfactoriamente con el host de la web.
+
 **Error 401:**
 El código de error HTTP 401 indica que la petición (request) no ha sido ejecutada porque carece de credenciales válidas de autenticación para el recurso solicitado. Este estatus se envia con un WWW-Authenticate encabezado que contiene informacion sobre como autorizar correctamente.
 **Error 402:**
