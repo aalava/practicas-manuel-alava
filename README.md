@@ -9,8 +9,8 @@ Las siglas API corresponden al inglés application programming interface, que se
 Las APIs de una aplicación permiten el acceso a los desarrolladores de otros programas a ciertas partes de su biblioteca para llevar a cabo determinadas acciones. Es decir, es la capacidad que tiene un software para comunicar.
 Esta parte de la programación no está pensada tanto para el usuario, sino para consumirla entre canales. 
 
-- **Estados de Error del Servidor**
---**Error 400:** 
+- **Estados de Error del Servidor** 
+-**Error 400:** 
 El Error 400 Bad Request significa literalmente Petición o Solicitud Incorrecta y principalmente se debe a discrepancias entre servidor y cliente. En otras palabras, nuestro ordenador (el cliente) ha sido incapaz de comunicarse satisfactoriamente con el host de la web.
 
 --**Error 401:**
