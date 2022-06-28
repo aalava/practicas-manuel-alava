@@ -10,19 +10,23 @@ Las APIs de una aplicación permiten el acceso a los desarrolladores de otros pr
 Esta parte de la programación no está pensada tanto para el usuario, sino para consumirla entre canales. 
 
 - **Estados de Error del Servidor**
-**Error 400:** 
+--**Error 400:** 
 El Error 400 Bad Request significa literalmente Petición o Solicitud Incorrecta y principalmente se debe a discrepancias entre servidor y cliente. En otras palabras, nuestro ordenador (el cliente) ha sido incapaz de comunicarse satisfactoriamente con el host de la web.
 
-**Error 401:**
+--**Error 401:**
 El código de error HTTP 401 indica que la petición (request) no ha sido ejecutada porque carece de credenciales válidas de autenticación para el recurso solicitado. Este estatus se envia con un WWW-Authenticate encabezado que contiene informacion sobre como autorizar correctamente.
-**Error 402:**
+
+--**Error 402:**
 Es un código HTTP de error de cliente no estandarizado, reservado para uso futuro.
 En ocasiones, este código indica que la solicitud no puede ser procesada hasta que el cliente realice un pago. Originalmente se creó para habilitar los sistemas de efectivo digital o (micro) pagos e indicaría que el contenido solicitado no está disponible hasta que el cliente realice un pago. Sin embargo, no existe una convención de uso estándar y diferentes entidades lo utilizan en diferentes contextos.
-**Error 403:**
+
+--**Error 403:**
 403 Prohibido – No tiene permiso para acceder a / en este servidor es un código de estado HTTP que se produce cuando el servidor web entiende la solicitud pero no puede proporcionarte acceso.
-**Error 404:**
+
+--**Error 404:**
 Un Error 404 es el código HTTP que envía el servidor al usuario cuando la URL a la que está intentando acceder no existe. Nos solemos encontrar con este mensaje cuando una página se ha eliminado o simplemente no hemos escrito bien la dirección, es entonces cuando nos encontramos con una pantalla con un aviso tipo “Error 404 not found” o “404 page not found”.
-**Error 405:**
+
+--**Error 405:**
 El método solicitado es conocido por el servidor pero ha sido deshabilitado y no puede ser utilizado. Los dos métodos obligatorios, GET y HEAD, nunca deben ser deshabilitados y no deberían retornar este código de error.
 
 Estos son los códigos de error más comunes, para mayor referencia visistar el sitio Web de [Mozilla]
