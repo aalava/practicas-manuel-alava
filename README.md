@@ -3,6 +3,17 @@
 
 Este repositorio contendrá los archivos necesarios del proyecto que será desarrollado con el fin de crear un sitio web tipo "ecommerce", utilizando herramientas javascript, node-JS, POSTMAN,  HTML, CSS-Grid Flex, Responsive Design entre otras tecnologías que se irán documentando a medida que las vayamas implementando.
 
+| Actidad | Tipo | Semana | Contenido | Estado |
+| --- | --- | --- | --- | --- |
+| Investigación | Ins | semana 1 | API | Completo |
+| Maquetado | Prac | semana 2 | HTML | Completo |
+| Diseño | Prac | semana 3 | CSS | Completo |
+| Diseño | Prac | semana 4 | CSS, Responsive | Completo |
+| Analisis API | Prac | semana 5 | JavaScript | Incompleto |
+| Consumo API | Prac | semana 6 | JavaScript | Incompleto |
+| Estructura API | Prac | semana 7 | JavaScript | Incompleto |
+| Despleguie de Aplicacion | Prac | semana 8 | GitHub | Incompleto |
+
 ## Conceptos Previos
 ### Qué es una API?
 Las siglas API corresponden al inglés application programming interface, que se traduce como interfaz de programación de aplicaciones. Esta fórmula se refiere al conjunto de estructuras que permiten que los componentes de un software se comuniquen con otros.
