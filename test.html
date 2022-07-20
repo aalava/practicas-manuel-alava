@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onLoad="load()">
+    <script>
+		function load(){			
+			var myHeaders = new Headers();
+			myHeaders.append("Authorization", "Bearer BQDjO11iHYgvzzkY8yAULZv8QoiEOOZclJX1rcDRc7B3SM_bP-FNSwwX7UDYAEYCwcPYmwBRVYHHzhEHbWCmtTOcapC4NkIxxaUIeV9Ohs8y9ZF9CyXXRaFb7d-XDXm7We7xQTTSid5PxYxz-pazpitt2LWPQ7OHZXWbGUTIE0jdIX45HB-DrKJfameVIIZVWz8l2zrjl9nhqyO_Gmq7Xmb7bC92lw");
+			
+			var requestOptions = {
+				method: 'GET',
+				headers: myHeaders,
+				redirect: 'follow'
+			};
+			
+			
+			/* Lanzamiento de Nuevos Albums */
+			fetch("http://api.spotify.com/v1/browse/new-releases?country=EC&limit=6", requestOptions)
+				.then(response => response.json())
+				.then(data => {
+				for (let i = 0; i < 6; i++){
+					var asd = document.getElementById("section");
+			asd.innerHTML = '3';
+					//console.log(data.albums.items[i].artists[0].name);
+				}
+				//appendData(data1);
+			})
+				.catch(error => console.log('error', error));
+			
+			
+			
+		}	
+	</script>
+	<div id="section">
+	</div>
+    
+</body>
+</html>
