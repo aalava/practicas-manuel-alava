@@ -3,7 +3,7 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'api.spotify.com/v1/browse/new-releases?country=EC&limit=4',
+  CURLOPT_URL => 'api.spotify.com/v1/browse/new-releases?country=EC&limit=6',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -563,14 +563,14 @@ for ($i = 0; $i < $test1['limit']; $i++){
 
                         <div class="row">
                             <?php for ($i = 0; $i < $test1['limit']; $i++) { ?>
-                                <div class="col-md-6 col-xl-3">								
+                                <div class="col-md-6 col-xl-2">								
                                     <!-- Simple card -->
                                     <div class="card"> 
                                         <img class="card-img-top img-fluid" src="<?php echo $test1['items'][$i]['images'][0]['url']; ?>" alt="Card image cap">
                                         <div class="card-body">
                                             <h4 class="card-title"><?php echo $test1['items'][$i]['artists'][0]['name']; ?></h4>
                                             <p class="card-text"><?php echo $test1['items'][$i]['name']; ?></p>
-                                            <a href="#" class="btn btn-primary">Reproducir</a> 
+                                            <a href="#" class="btn btn-success">Reproducir</a> 
                                         </div>
                                     </div>
                                 </div>
