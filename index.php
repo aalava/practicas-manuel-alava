@@ -12,7 +12,7 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'GET',
   CURLOPT_HTTPHEADER => array(
-    'Authorization: Bearer BQC1DJy51Ztf7rhv_kRyVPMGQ7oOdqxVWL69KcCxK_4bRpAOXzkRUNn_yxZft6CK0hDOpx2-VATRS8a6Q-5tSGI88SfS4Fr1vMntk0qJtJC-bZa39xvxFRHfP7ep1UFk9XLjLCivMW1CQhYOSQr1v8pB_qihF4ZSdfLyfPNUD_JXa0LisOTnwjWwfzhZ8ycGCxgYk3yAiV8iO-VLRGD5HFQy536vgw'
+    'Authorization: Bearer BQCE2xMWxX0WIRHg2Dksu6GWLRqwSwrGYq9vpuV9uXZVvcU6sDf1f1uJVAAI3KF2cbfy_pCDcoZw-jkQ8YwrEwT08tHp5nqHaM-9DiaOpUaa-RwPSIXj6QYx0a-07izQD2h1w5vzLlbQWVUzxrhSZO3kxzjnFel2fFkdN4SSI7F1AbMw1PdmTE1Knc_0Wy5xIObE6TnTukvoXWb3dw-0swQfR5iIzQ'
   ),
 ));
 
@@ -543,12 +543,8 @@ for ($i = 0; $i < $test1['limit']; $i++){
                 <div class="content">
 
                     <!-- Start Content-->
-                    <div class="container-fluid">
-						
+                    <div class="container-fluid">				
 						<!-- start page title -->
-
-                        
-
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box">
@@ -556,10 +552,10 @@ for ($i = 0; $i < $test1['limit']; $i++){
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Adminto</a></li>
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Layouts</a></li>
-                                            <li class="breadcrumb-item active">Horizontal Layout</li>
+                                            <li class="breadcrumb-item active">Ultimos Lanzamientos</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Horizontal Layout</h4>
+                                    <h4 class="page-title">Ultimos Lanzamientos</h4>
                                 </div>
                             </div>
                         </div>     
@@ -573,8 +569,8 @@ for ($i = 0; $i < $test1['limit']; $i++){
                                         <img class="card-img-top img-fluid" src="<?php echo $test1['items'][$i]['images'][0]['url']; ?>" alt="Card image cap">
                                         <div class="card-body">
                                             <h4 class="card-title"><?php echo $test1['items'][$i]['artists'][0]['name']; ?></h4>
-                                            <p class="card-text"><?php echo $test1['items'][$i]['images'][0]['url']; ?></p>
-                                            <a href="#" class="btn btn-primary">Button</a> 
+                                            <p class="card-text"><?php echo $test1['items'][$i]['name']; ?></p>
+                                            <a href="#" class="btn btn-primary">Reproducir</a> 
                                         </div>
                                     </div>
                                 </div>
