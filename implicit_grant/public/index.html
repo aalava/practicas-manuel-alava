@@ -131,8 +131,14 @@
 
           document.getElementById('login-button').addEventListener('click', function() {
 
-            var client_id = 'CLIENT_ID'; // Your client id
-            var redirect_uri = 'REDIRECT_URI'; // Your redirect uri
+            //require('dotenv').config()
+
+            var client_id = '6a68cbb058bc445ea3f9497698cacd47';
+            //const CLIENT_SECRET = process.env.CLIENT_SECRET;
+            var redirect_uri = 'http://localhost:8888/callback';
+
+            //var client_id = 'CLIENT_ID'; // Your client id
+            //var redirect_uri = 'REDIRECT_URI'; // Your redirect uri
 
             var state = generateRandomString(16);
 
