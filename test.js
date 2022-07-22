@@ -1,5 +1,5 @@
-require('dotenv').config()
-//import 'dotenv/config';
+//require('dotenv').config()
+import 'dotenv/config';
 //import request from 'request';
 
 const CLIENT_ID = process.env.CLIENT_ID;
