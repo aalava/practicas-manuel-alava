@@ -45,13 +45,13 @@ request.post(authOptions, function(error, response, body) {
       redirect: 'follow'
     };
     
-    getLastRelease(null, requestOptions);
+    getLastRelease(requestOptions);
 
 
   }
 });
 
-async function getLastRelease(url, requestOptions){
+function getLastRelease(requestOptions){
   fetch(`${API}/browse/new-releases?country=EC&limit=20`, requestOptions)
   .then(response => response.json())
   .then(data => {
