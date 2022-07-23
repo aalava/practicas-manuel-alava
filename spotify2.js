@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 var myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer BQCOVY8EUnduO9A358JnXEehNg_PHjdSH69EXkO__d29iDNsyb75NP-a3qIqlzgT_H8JAzvdd-1a_4lCrRR7m7TPLIoeaXcFNC_0aAMz1viIhy2fEtXPm__ZmfIFZOt9yi_G8ido0xcJSQtdz8PWipqJZfq-q4Op2JPvoYEIxsvQbXFMVhzcXplZniaPHTHc53NyyCY1xjU8SebOqxZk7SJrVAWnsw")
+myHeaders.append("Authorization", "Bearer BQBBxS4Xv8PyDwNnw2SXWQBFoQz6jkli8e1YaeCiXYx7G__7dfPNaJh7OtqpyDNp17-CHjcljwnUwn8o1Vn00CJVorfuFMfNCXBfmlEVHXCZZEYEZns")
 
 var requestOptions = {
   method: 'GET',
@@ -10,6 +10,21 @@ var requestOptions = {
 };
 
 /* Ultimos Lanzamientos : Artistas + Albums */
+async function getLastRelease(){
+  const response = await fetch("https://api.spotify.com/v1/browse/new-releases?country=EC&limit=6", requestOptions)
+  const data = await response.json()
+  
+  console.log(data.albums.items[0].artists[0].name);
+  
+
+
+
+}
+
+getLastRelease(requestOptions);
+
+
+/*
 fetch("https://api.spotify.com/v1/browse/new-releases?country=EC&limit=20", requestOptions)
   .then(response => response.json())
   .then(data => {
@@ -20,3 +35,4 @@ fetch("https://api.spotify.com/v1/browse/new-releases?country=EC&limit=20", requ
 })
 .catch(error => console.log('error', error));
 
+*/
