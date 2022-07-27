@@ -12,7 +12,7 @@ curl_setopt_array($curl, array(
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => 'GET',
     CURLOPT_HTTPHEADER => array(
-        'Authorization: Bearer BQAXzoEsO_N4CiGOBTp2nw0daW56RvegS3JBYKMAgLnItS3HQjkaUbxCfxcBcZ1vrGVdHADfAmRXUf7P29ZmCFwp5U6ZHDs_uW0xAvHpauQR7nqN_ow'
+        'Authorization: Bearer BQCVaWXOwvpmzSj6Why6yprOA9zuxSrlQ6yVrBwx_B0lPTeoxVL3s8Yt5_n2vTp7AXkFpMi1T6mOWau5GOmRhKNL4miFxoYhFo-9w2Z6-RSwTICp4-4'
     ),
 ));
 
@@ -338,7 +338,6 @@ for ($i = 0; $i < $test1['limit']; $i++){
                     </div>
                     <!-- end page title -->
 
-
                     <!-- Standard modal content -->
                     <div id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -485,9 +484,6 @@ for ($i = 0; $i < $test1['limit']; $i++){
     <script src="assets/libs/simplebar/simplebar.min.js"></script>
 
     <script src="assets/libs/feather-icons/feather.min.js"></script>
-
-    <!-- Dashboar init js-->
-    <script src="assets/js/pages/dashboard.init.js"></script>
 
     <!-- App js-->
     <script src="assets/js/app.min.js"></script>
