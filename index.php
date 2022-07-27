@@ -12,7 +12,7 @@ curl_setopt_array($curl, array(
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => 'GET',
     CURLOPT_HTTPHEADER => array(
-        'Authorization: Bearer BQCOVY8EUnduO9A358JnXEehNg_PHjdSH69EXkO__d29iDNsyb75NP-a3qIqlzgT_H8JAzvdd-1a_4lCrRR7m7TPLIoeaXcFNC_0aAMz1viIhy2fEtXPm__ZmfIFZOt9yi_G8ido0xcJSQtdz8PWipqJZfq-q4Op2JPvoYEIxsvQbXFMVhzcXplZniaPHTHc53NyyCY1xjU8SebOqxZk7SJrVAWnsw'
+        'Authorization: Bearer BQAXzoEsO_N4CiGOBTp2nw0daW56RvegS3JBYKMAgLnItS3HQjkaUbxCfxcBcZ1vrGVdHADfAmRXUf7P29ZmCFwp5U6ZHDs_uW0xAvHpauQR7nqN_ow'
     ),
 ));
 

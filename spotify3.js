@@ -54,7 +54,18 @@ request.post(authOptions, function(error, response, body) {
 
 /* Ultimos Lanzamientos : Artistas + Albums */
 async function getLastRelease(requestOptions){
-    const response = await fetch("https://api.spotify.com/v1/browse/new-releases?country=EC&limit=6", requestOptions);
+    const response = await fetch("https://api.spotify.com/v1/browse/new-releases?country=EC&limit=20", requestOptions);
     let data = await response.json();
-    console.log(data.albums.limit);
+    /*for (let i = 0; i < data.albums.limit; i++){
+      console.log('Artista: ' + data.albums.items[i].artists[0].name + ' ' +  'Album: ' + data.albums.items[i].name);
+    }*/
+
+    data.albums.items.map(i => {
+      i.artists.map(j => {
+        console.log(j.name);
+      })
+    })
+
+    /*flat map*/
+
 }
