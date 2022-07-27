@@ -67,7 +67,7 @@ async function getLastRelease(requestOptions){
                     <div class="card"> 
 						<img class="card-img-top img-fluid" src="assets/images/gallery/1.jpg" alt="Card image cap">
 						<div class="card-body">
-							<h4 class="card-title">Card title</h4>
+							<h4 class="card-title">${i.artists[0].name}</h4>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 							<a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#standard-modal">Button</a> 
 						</div>
