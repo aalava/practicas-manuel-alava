@@ -12,7 +12,7 @@
 
 import request from "request";
 import 'dotenv/config';
-import fetch from 'node-fetch'
+import fetch, { Headers } from 'node-fetch'
 
 var client_id = process.env.CLIENT_ID;
 var client_secret = process.env.CLIENT_SECRET;

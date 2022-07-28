@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import fetch, { Headers } from 'node-fetch'
 
 var myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer BQAXzoEsO_N4CiGOBTp2nw0daW56RvegS3JBYKMAgLnItS3HQjkaUbxCfxcBcZ1vrGVdHADfAmRXUf7P29ZmCFwp5U6ZHDs_uW0xAvHpauQR7nqN_ow")
