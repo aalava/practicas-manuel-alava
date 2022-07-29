@@ -35,6 +35,7 @@ request.post(authOptions, function(error, response, body) {
   if (!error && response.statusCode === 200) {
     // use the access token to access the Spotify Web API
     let token = body.access_token;
+    console.log(token);
 
     let myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+ token+"")

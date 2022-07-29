@@ -58,7 +58,7 @@ async function getLastRelease(requestOptions){
       console.log('Artista: ' + data.albums.items[i].artists[0].name + ' ' +  'Album: ' + data.albums.items[i].name);
     }*/
 
-    const contentAPP = document.getElementById('contentAPP');
+/*    const contentAPP = document.getElementById('contentAPP');
 
     let view = `
             ${data.albums.items.map(
@@ -77,14 +77,14 @@ async function getLastRelease(requestOptions){
             
         `;
 
-    contentAPP.innerHTML = view;
-/*
+    contentAPP.innerHTML = view;*/
+
     data.albums.items.map(i => {
       i.artists.map(j => {
         console.log(j.name);
       })
     })
-*/
+
     /*flat map*/
 
 }
