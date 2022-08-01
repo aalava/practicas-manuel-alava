@@ -62,7 +62,7 @@ async function getLastRelease(requestOptions){
 
     let view = `
             ${data.albums.items.map(
-                (i) =>
+                (i) => 
                     `
                     <div class="card"> 
 						<img class="card-img-top img-fluid" src="assets/images/gallery/1.jpg" alt="Card image cap">
