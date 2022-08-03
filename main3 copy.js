@@ -1,7 +1,7 @@
 //import 'dotenv/config';
 
-var client_id = '****';
-var client_secret = '****';
+var client_id = '0202f1ce31ba462ea36be15731c8ec2f';
+var client_secret = 'a3af838c94ea47fcbfaf2eb99a71c9db';
 
 var stringEncoded = btoa(client_id + ':' + client_secret);
 
@@ -53,27 +53,34 @@ async function getLastRelease(requestOptions){
     const response = await fetch(`${API}/browse/new-releases?country=EC&limit=18`, requestOptions);
     const data = await response.json();
     
-    /*
     for (let i = 0; i < data.albums.limit; i++){
         console.log('Artista: ' + data.albums.items[i].artists[0].name + ' ' +  'Album: ' + data.albums.items[i].name);
     }
-    */
 
     /* Listado de Canciones de cada Album */
     async function getTracksByAlbum(AlbumID){
         const response = await fetch(`${API}/albums/${AlbumID}`, requestOptions);
-        let data = await response.json();
+        let dataTracksbyAlbum = await response.json();
 
-        const response2 = data.tracks.items.map(i => i.name)
-        
-        return response2;        
+        dataTracksbyAlbum.tracks.items.map(i => {
+            console.log(i.name);
+          })     
     }
 
-    const tracksItems = getTracksByAlbum('6FJxoadUE4JNVwWHghBwnb');
+    for (let i = 0; i < data.albums.limit; i++){
+        //console.log(data.albums.items[i].id);
+        getTracksByAlbum(data.albums.items[i].id);
 
-    //getTracksByAlbum('6FJxoadUE4JNVwWHghBwnb');
-  
+        
+       // getTracksByAlbum('6FJxoadUE4JNVwWHghBwnb');
 
+        
+    }
+
+    
+
+   /*
+    
     const contentAPP = document.getElementById('lastRelease');
 
     let viewLastRelease = `
@@ -84,19 +91,19 @@ async function getLastRelease(requestOptions){
                     <div class="modal-dialog">  
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="standard-modalLabel"><a href="${i.external_urls.spotify}" target="_blank">${i.name}</a></h4>
+                                <h4 class="modal-title" id="standard-modalLabel">Titulo Album #${j}</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <h6>Fecha de Lanzamiento:</h6>
-                                <p>${i.release_date}</p>
+                                <h6>Text in a modal</h6>
+                                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
                                 <hr>
-                                <h6>Total de Tracks: ${i.total_tracks}</h6>
-                               
-                                <p></p>
+                                <h6>Overflowing text to show scroll behavior</h6>
+                                <p>${getTracksByAlbum('6FJxoadUE4JNVwWHghBwnb')}</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
@@ -115,5 +122,5 @@ async function getLastRelease(requestOptions){
                 `
         ).join('')}
     `
-    contentAPP.innerHTML = viewLastRelease;
+    contentAPP.innerHTML = viewLastRelease;*/
 }
