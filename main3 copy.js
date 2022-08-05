@@ -53,34 +53,35 @@ async function getLastRelease(requestOptions){
     const response = await fetch(`${API}/browse/new-releases?country=EC&limit=18`, requestOptions);
     const data = await response.json();
     
+    /*
     for (let i = 0; i < data.albums.limit; i++){
         console.log('Artista: ' + data.albums.items[i].artists[0].name + ' ' +  'Album: ' + data.albums.items[i].name);
     }
+    */
 
-    /* Listado de Canciones de cada Album */
+    // Listado de Canciones de cada Album
     async function getTracksByAlbum(AlbumID){
         const response = await fetch(`${API}/albums/${AlbumID}`, requestOptions);
-        let dataTracksbyAlbum = await response.json();
+        let data = await response.json();
 
-        dataTracksbyAlbum.tracks.items.map(i => {
-            console.log(i.name);
-          })     
+        const response2 = await data.tracks.items.map(i => i.name)
+
+        //console.log(response2[0]);
+        
+        return response2;        
     }
 
-    for (let i = 0; i < data.albums.limit; i++){
-        //console.log(data.albums.items[i].id);
-        getTracksByAlbum(data.albums.items[i].id);
+    const tracksItems = await getTracksByAlbum('6FJxoadUE4JNVwWHghBwnb');
 
-        
-       // getTracksByAlbum('6FJxoadUE4JNVwWHghBwnb');
+    // Mostrando los Tracks de los Albums
+    const tracksAPP = document.getElementById('tracks');
 
-        
-    }
-
+    //console.log(tracksItems);
     
+    tracksAPP.innerHTML = tracksItems;
 
-   /*
-    
+  
+    // Mostrando los últimos lanzamientos 
     const contentAPP = document.getElementById('lastRelease');
 
     let viewLastRelease = `
@@ -91,19 +92,18 @@ async function getLastRelease(requestOptions){
                     <div class="modal-dialog">  
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="standard-modalLabel">Titulo Album #${j}</h4>
+                                <h4 class="modal-title" id="standard-modalLabel"><a href="${i.external_urls.spotify}" target="_blank">${i.name}</a></h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <h6>Text in a modal</h6>
-                                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                                <h6>Fecha de Lanzamiento:</h6>
+                                <p>${i.release_date}</p>
                                 <hr>
-                                <h6>Overflowing text to show scroll behavior</h6>
-                                <p>${getTracksByAlbum('6FJxoadUE4JNVwWHghBwnb')}</p>
+                                <h6>Total de Tracks: ${i.total_tracks}</h6>                               
+                                <p>${tracksItems}</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
@@ -122,5 +122,5 @@ async function getLastRelease(requestOptions){
                 `
         ).join('')}
     `
-    contentAPP.innerHTML = viewLastRelease;*/
+    contentAPP.innerHTML = viewLastRelease;
 }

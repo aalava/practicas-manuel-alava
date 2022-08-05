@@ -1,7 +1,7 @@
 //import 'dotenv/config';
 
-var client_id = '****';
-var client_secret = '****';
+var client_id = '0202f1ce31ba462ea36be15731c8ec2f';
+var client_secret = 'a3af838c94ea47fcbfaf2eb99a71c9db';
 
 var stringEncoded = btoa(client_id + ':' + client_secret);
 
@@ -59,21 +59,29 @@ async function getLastRelease(requestOptions){
     }
     */
 
-    /* Listado de Canciones de cada Album */
+    // Listado de Canciones de cada Album
     async function getTracksByAlbum(AlbumID){
         const response = await fetch(`${API}/albums/${AlbumID}`, requestOptions);
         let data = await response.json();
 
-        const response2 = data.tracks.items.map(i => i.name)
+        const response2 = await data.tracks.items.map(i => i.name)
+
+        //console.log(response2[0]);
         
         return response2;        
     }
 
-    const tracksItems = getTracksByAlbum('6FJxoadUE4JNVwWHghBwnb');
+    const tracksItems = await getTracksByAlbum('6FJxoadUE4JNVwWHghBwnb');
 
-    //getTracksByAlbum('6FJxoadUE4JNVwWHghBwnb');
+    // Mostrando los Tracks de los Albums
+    const tracksAPP = document.getElementById('tracks');
+
+    //console.log(tracksItems);
+    
+    tracksAPP.innerHTML = tracksItems;
+
   
-
+    // Mostrando los últimos lanzamientos 
     const contentAPP = document.getElementById('lastRelease');
 
     let viewLastRelease = `
@@ -91,9 +99,8 @@ async function getLastRelease(requestOptions){
                                 <h6>Fecha de Lanzamiento:</h6>
                                 <p>${i.release_date}</p>
                                 <hr>
-                                <h6>Total de Tracks: ${i.total_tracks}</h6>
-                               
-                                <p></p>
+                                <h6>Total de Tracks: ${i.total_tracks}</h6>                               
+                                <p>${tracksItems}</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
