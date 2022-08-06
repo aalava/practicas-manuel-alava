@@ -49,127 +49,41 @@ const getAccessToken = async () => {
 
 getAccessToken();
 
+async function getLastRelease(requestOptions){
+    const response = await fetch(`${API}/browse/new-releases?country=EC&limit=18`, requestOptions);
+    const dataLastRelease = await response.json();
+  
+    // Mostrando los últimos lanzamientos 
+    const contentAPP = document.getElementById('lastRelease');
 
-async function getTracksByAlbum(AlbumID, requestOptions){
-
-    // Obteniendo el id del div en el documento
-    const tracksAPP = document.getElementById('tracks');
-
-    // Ejecutando la funcion con los parametros
-    const response = await fetch(`${API}/albums/${AlbumID}`, requestOptions);
-    let dataTracksbyAlbum = await response.json();
-
-   
-    const response2 = dataTracksbyAlbum.tracks.items.map((i) => {
-        //const tracksAPP = document.getElementById('tracks');
-
-        const test = i.name;
-
-        console.log(i.name);
-
-        //tracksAPP.append(test);
-
-            
-    })
-
-    let viewTracksByAlbum = `${dataTracksbyAlbum.tracks.items.map((i) => 
-        `
-        <li>${i.name}</li>
-    `).join('')}  
-    `
-
-    tracksAPP.innerHTML = viewTracksByAlbum;
-
-
-    //tracksAPP.innerHTML = viewTracksByAlbum;
-        
-        //console.log(response2);
-    
-    //return response2;        
-
-    /*
-
-    const tracksAPP = document.getElementById('tracks');
-
-    let viewTracksByAlbum = `${dataTracksbyAlbum.tracks.items.map((i) => 
-        `
-        <li>${i.name}</li>
-    `).join('')}  
-    `
-    tracksAPP.innerHTML = viewTracksByAlbum;
-
-*/
-    // Obteniendo el id del div para mostrar los Tracks de los Albums
-    /*const tracksAPP = document.getElementById('tracks');
-
-    let viewTracksByAlbum = `
-        ${dataTracksbyAlbum.tracks.items.map(
-            (i) => 
+    // Generando el HTML principal (Modal + Galeria)
+    let viewLastRelease = `
+        ${dataLastRelease.albums.items.map(
+            (i, j) => 
                 `
-                <div id="standard-modal${orderId}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+                <div id="standard-modal${j}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
                     <div class="modal-dialog">  
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="standard-modalLabel"><a href="" target="_blank">${i.name}</a></h4>
+                                <h4 class="modal-title" id="standard-modalLabel"><a href="${i.external_urls.spotify}" target="_blank">${i.name}</a></h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <h6>Fecha de Lanzamiento:</h6>
-                                <p></p>
+                                <p>${i.release_date}</p>
                                 <hr>
                                 <h6>Total de Tracks: ${i.total_tracks}</h6>                               
-                                <p></p>
+                                <div id="tracks">
+                                    <div id="tracks${j}"></div>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->            
-                `
-        ).join('')}
-    `
+                </div><!-- /.modal -->
 
-    // Mostrando los tracks en el div
-    tracksAPP.innerHTML = viewTracksByAlbum;
-
-*/
-}
-
-async function getLastRelease(requestOptions){
-    const response = await fetch(`${API}/browse/new-releases?country=EC&limit=18`, requestOptions);
-    const dataLastRelease = await response.json();
-    
-    for (let i=0; i < dataLastRelease.albums.limit; i++){
-        await getTracksByAlbum(dataLastRelease.albums.items[i].id, requestOptions);
-    }
-    
-    /*
-    for (let i = 0; i < data.albums.limit; i++){
-        console.log('Artista: ' + data.albums.items[i].artists[0].name + ' ' +  'Album: ' + data.albums.items[i].name);
-    }
-    */
-
-    // Listado de Canciones de cada Album
-    
-
-    //const tracksItems = await getTracksByAlbum('6FJxoadUE4JNVwWHghBwnb', requestOptions);
-
-    // Mostrando los Tracks de los Albums
-    //const tracksAPP = document.getElementById('tracks');
-
-    //console.log(tracksItems);
-    
-    //tracksAPP.innerHTML = tracksItems;
-
-  
-    // Mostrando los últimos lanzamientos 
-    const contentAPP = document.getElementById('lastRelease');
-
-    let viewLastRelease = `
-        ${dataLastRelease.albums.items.map(
-            (i, j) => 
-                `
                 <div class="col-md-6 col-xl-2">
                     <div class="card"> 
                         <img class="card-img-top img-fluid" src="${i.images[0].url}" alt="Card image cap">
@@ -183,5 +97,36 @@ async function getLastRelease(requestOptions){
                 `
         ).join('')}
     `
+
     contentAPP.innerHTML = viewLastRelease;
+
+    //Ejecutando la función para extraer los tracks de cada álbum mostrado
+    for (let i = 0; i < dataLastRelease.albums.limit; i++){
+        await getTracksByAlbum(i, dataLastRelease.albums.items[i].id, requestOptions);
+    }
+}
+
+async function getTracksByAlbum(orderId, AlbumID, requestOptions){
+    // Ejecutando la funcion con los parametros
+    const response = await fetch(`${API}/albums/${AlbumID}`, requestOptions);
+    let dataTracksbyAlbum = await response.json();
+
+    await createTracksModals(orderId, dataTracksbyAlbum);    
+}
+
+async function createTracksModals(orderId, dataTracksbyAlbum){    
+    // Obteniendo el id del div en el documento
+    const tracksAPP = document.getElementById(`tracks${orderId}`);
+
+    // Ingresado los tracks en un div del modal creado
+    let modalContent = `${dataTracksbyAlbum.tracks.items.map(
+        (i) =>
+        `
+        <li style="margin-left: 20px;">${i.name}</li>
+        `
+        ).join('')}
+    `
+    tracksAPP.innerHTML = modalContent;
+
+    console.log(dataTracksbyAlbum.tracks.items);
 }
