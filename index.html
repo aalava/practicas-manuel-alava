@@ -12,7 +12,6 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App css -->
-
         <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
 
         <!-- icons -->
@@ -32,64 +31,39 @@
             <div class="navbar-custom">
                 <div class="container-fluid">
                      <ul class="list-unstyled topnav-menu float-end mb-0">
-
                         <li class="d-none d-lg-block">
-                            <form class="app-search">
+                            <form class="app-search" action="search.html" method="get">
                                 <div class="app-search-box">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search..." id="top-search">
+                                        <input type="text" class="form-control" placeholder="Buscar..." id="top-search" name="q">
                                         <button class="btn input-group-text" type="submit">
                                             <i class="fe-search"></i>
                                         </button>
                                     </div>
                                 </div>
                             </form>
-                        </li>
-    
-                        <li class="dropdown d-inline-block d-lg-none">
-                            <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <i class="fe-search noti-icon"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-lg dropdown-menu-end p-0">
-                                <form class="p-3">
-                                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-                                </form>
-                            </div>
-                        </li>
-                
+                        </li>                    
                         <li class="dropdown notification-list topbar-dropdown">
                             <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
                                 <span class="pro-user-name ms-1">
-                                    Manuel Alava <i class="mdi mdi-chevron-down"></i> 
+                                    Manuel Alava 
                                 </span>
                             </a>
-                        </li>
-    
-                    </ul>
-    
+                        </li>    
+                    </ul>    
                     <!-- LOGO -->
                     <div class="logo-box">
                         <a href="index.html" class="logo logo-light text-center">
                             <span class="logo-sm">
-                                <img src="assets/images/logo-sm.png" alt="" height="22">
+                                <img src="assets/images/manalavalogo.png" alt="" height="26">
                             </span>
                             <span class="logo-lg">
-                                <img src="assets/images/logo-light.png" alt="" height="16">
-                            </span>
-                        </a>
-                        <a href="index.html" class="logo logo-dark text-center">
-                            <span class="logo-sm">
-                                <img src="assets/images/logo-sm.png" alt="" height="22">
-                            </span>
-                            <span class="logo-lg">
-                                <img src="assets/images/logo-dark.png" alt="" height="16">
+                                <img src="assets/images/manalavalogo.png" alt="" height="52">
                             </span>
                         </a>
                     </div>
-
                     <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
-
                         <li>
                             <!-- Mobile menu toggle (Horizontal Layout)-->
                             <a class="navbar-toggle nav-link" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
@@ -100,14 +74,10 @@
                                 </div>
                             </a>
                             <!-- End mobile menu toggle-->
-                        </li>
-             
-                    </ul>
-
-                    <div class="clearfix"></div> 
-        
-                </div>
-              
+                        </li>             
+                    </ul> 
+                    <div class="clearfix"></div>         
+                </div>              
             </div>
             <!-- end Topbar -->
 
@@ -201,57 +171,7 @@
                         </div>     
                         <!-- end page title --> 
                         
-                        <div class="row" id="lastRelease"></div>
-                        					
-						<div class="row">
-							<div class="col-md-6 col-xl-3">								
-								<!-- Simple card -->
-								<div class="card"> 
-									<img class="card-img-top img-fluid" src="assets/images/gallery/1.jpg" alt="Card image cap">
-									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
-										<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										<a href="#" class="btn btn-primary">Button</a> 
-									</div>
-								</div>
-							</div>
-							<!-- end col -->
-							
-							<div class="col-md-6 col-xl-3">
-								<div class="card"> 
-									<img class="card-img-top img-fluid" src="assets/images/gallery/1.jpg" alt="Card image cap">
-									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
-										<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										<a href="#" class="btn btn-primary">Button</a> </div>
-								</div>
-							</div>
-							<!-- end col -->
-							
-							<div class="col-md-6 col-xl-3">
-								<div class="card"> 
-									<img class="card-img-top img-fluid" src="assets/images/gallery/1.jpg" alt="Card image cap">
-									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
-										<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										<a href="#" class="btn btn-primary">Button</a> 
-									</div>
-								</div>
-							</div>
-							<!-- end col -->
-							
-							<div class="col-md-6 col-xl-3">
-								<div class="card"> 
-									<img class="card-img-top img-fluid" src="assets/images/gallery/1.jpg" alt="Card image cap">
-									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
-										<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										<a href="#" class="btn btn-primary">Button</a> </div>
-								</div>
-							</div>
-							<!-- end col -->	
-						</div>
-                        <!-- end row -->
+                        <div class="row" id="lastRelease"></div>                        					
 						
 					</div> <!-- container -->
 
@@ -273,7 +193,6 @@
             <!-- ============================================================== -->
             <!-- End Page content -->
             <!-- ============================================================== -->
-
 
         </div>
         <!-- END wrapper -->
