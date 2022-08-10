@@ -59,12 +59,6 @@ async function searchArtists(requestOptions){
     const response = await fetch(`${API}/search/?q=${query}&type=track%2Cartist&limit=12`, requestOptions);
     const dataSearchArtists = await response.json();
 
-    console.log(dataSearchArtists);
-
-    console.log(dataSearchArtists.artists.items[0].images[0].url);
-
-   
-
     const artistsAPP = document.getElementById("artists");
 
     const objetoVacio = (obj) => {
@@ -76,14 +70,13 @@ async function searchArtists(requestOptions){
         }
     }
 
-
     let viewSearchArtists = `
         ${dataSearchArtists.artists.items.map(
             (i) => 
                 `
                 <div class="col-md-6 col-xl-2">
                     <div class="card"> 
-                        <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="${objetoVacio(i)}" alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title"><a href="${i.external_urls.spotify}" target="_blank"></a></h4>
                             <p class="card-text">${i.name}</p>

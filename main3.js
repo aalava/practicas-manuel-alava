@@ -127,6 +127,4 @@ async function createTracksModals(orderId, dataTracksbyAlbum){
         ).join('')}
     `
     tracksAPP.innerHTML = modalContent;
-
-    console.log(dataTracksbyAlbum.tracks.items);
 }
