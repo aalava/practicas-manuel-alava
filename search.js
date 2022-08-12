@@ -1,7 +1,7 @@
 //import 'dotenv/config';
 
-var client_id = '***';
-var client_secret = '***';
+var client_id = '0202f1ce31ba462ea36be15731c8ec2f'
+var client_secret = 'a3af838c94ea47fcbfaf2eb99a71c9db'
 
 var stringEncoded = btoa(client_id + ':' + client_secret);
 
@@ -91,9 +91,4 @@ async function searchArtists(requestOptions){
 
     artistsAPP.innerHTML = viewSearchArtists;
   
-
-
-
-    
-
 }
