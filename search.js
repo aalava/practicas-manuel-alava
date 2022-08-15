@@ -1,7 +1,7 @@
 //import 'dotenv/config';
 
 var client_id = '0202f1ce31ba462ea36be15731c8ec2f'
-var client_secret = 'a3af838c94ea47fcbfaf2eb99a71c9db'
+var client_secret = '2088e9dcb8c64af2a9473938b3355f58'
 
 var stringEncoded = btoa(client_id + ':' + client_secret);
 
@@ -55,7 +55,7 @@ const urlParams = new URLSearchParams(queryString);
 
 const query = urlParams.get('q')
 
-async function searchArtists(requestOptions){
+const searchArtists = async (requestOptions) => {
     const response = await fetch(`${API}/search/?q=${query}&type=track%2Cartist&limit=12`, requestOptions);
     const dataSearchArtists = await response.json();
 
@@ -63,7 +63,7 @@ async function searchArtists(requestOptions){
 
     const objetoVacio = (obj) => {
         if (Object.entries(obj.images).length === 0){   
-            return false       
+            return false   
         }
         else {
             return obj.images[0].url;
@@ -90,5 +90,5 @@ async function searchArtists(requestOptions){
     `
 
     artistsAPP.innerHTML = viewSearchArtists;
-  
+
 }

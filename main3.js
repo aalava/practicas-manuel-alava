@@ -1,7 +1,7 @@
 //import 'dotenv/config';
 
 var client_id = '0202f1ce31ba462ea36be15731c8ec2f'
-var client_secret = 'a3af838c94ea47fcbfaf2eb99a71c9db'
+var client_secret = '2088e9dcb8c64af2a9473938b3355f58'
 
 var stringEncoded = btoa(client_id + ':' + client_secret);
 
@@ -48,16 +48,16 @@ const getAccessToken = async () => {
 
     // Ejecución de las Peticiones
 
-    getLastRelease(requestOptions, data.access_token);
+    getLastRelease(requestOptions);
 
 }
 
 getAccessToken();
 
-async function getLastRelease(requestOptions, access_token){
+const getLastRelease = async (requestOptions) => {
     const response = await fetch(`${API}/browse/new-releases?country=EC&limit=18`, requestOptions);
     const dataLastRelease = await response.json();
-  
+
     // Mostrando los últimos lanzamientos 
     const contentAPP = document.getElementById('lastRelease');
 
@@ -85,7 +85,7 @@ async function getLastRelease(requestOptions, access_token){
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
                             </div>
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
@@ -109,19 +109,19 @@ async function getLastRelease(requestOptions, access_token){
 
     //Ejecutando la función para extraer los tracks de cada álbum mostrado
     for (let i = 0; i < dataLastRelease.albums.limit; i++){
-        await getTracksByAlbum(i, dataLastRelease.albums.items[i].id, requestOptions, access_token);
+        await getTracksByAlbum(i, dataLastRelease.albums.items[i].id, requestOptions);
     }
 }
 
-async function getTracksByAlbum(orderId, AlbumID, requestOptions, access_token){
+const getTracksByAlbum = async (orderId, AlbumID, requestOptions) => {
     // Ejecutando la funcion con los parametros
     const response = await fetch(`${API}/albums/${AlbumID}`, requestOptions);
     let dataTracksbyAlbum = await response.json();
 
-    await createTracksModals(orderId, dataTracksbyAlbum, access_token);    
+    await createTracksModals(orderId, dataTracksbyAlbum);    
 }
 
-async function createTracksModals(orderId, dataTracksbyAlbum, access_token){    
+const createTracksModals = async (orderId, dataTracksbyAlbum) => {
     // Obteniendo el id del div en el documento
     const tracksAPP = document.getElementById(`tracks${orderId}`);
 
@@ -129,50 +129,55 @@ async function createTracksModals(orderId, dataTracksbyAlbum, access_token){
     let modalContent = `${dataTracksbyAlbum.tracks.items.map(
         (i) =>
         `
-        <li style="margin-left: 10px; margin-top: 8px; font-size: 16px; padding-left: 12px"><a href="#" target="_blank">${i.name}</a> 
-        <button class="btn btn-outline-success btn-xs rounded-pill waves-effect waves-light" style="font-size: 12px" onclick="addFavoriteTracks('${i.uri}', '${access_token}')">
-        <i class="mdi mdi-heart me-1"></i> Like</button></li>
+        <li style="margin-left: 10px; margin-top: 8px; font-size: 16px; padding-left: 12px"><a href="${i.external_urls.spotify}" target="_blank">${i.name}</a> 
+            <video width="160" height="20" controls="" name="media">
+                <source src="${i.preview_url}" type="audio/mpeg">
+            </video>
+        </li>
         `
         ).join('')}
     `
     tracksAPP.innerHTML = modalContent;
 }
 
-async function addFavoriteTracks(trackID, access_token){/*
+const addFavoriteTracks = async (trackID) => {
+    /*
     console.log(trackID);
     var myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
     myHeaders.append("Authorization", "Bearer "+ access_token+"")
-
+    
     myHeaders.append("Content-Type", "application/json");
     
     //var formdata = new FormData();
-
+    
     var requestPostOptions = {
         method: 'POST',
         headers: myHeaders
-      };
+    };
 
     const response = await fetch(`${API}/playlists/6aWCids1nh2qsIiuZwwAEO/tracks?uris=${trackID}`, requestPostOptions);
-*/
-console.log(access_token);
-var myHeaders = new Headers();
-myHeaders.append("Accept", "application/json");
-myHeaders.append("Content-Type", "application/json");
-//myHeaders.append("Authorization", "Bearer AQDqQTqOYNlaLsMl71kCt_kNb_7NwNUbqmToidxlF1jK4ARMPErLevNDbOGxIDjc7NrVkYKNEdUyyWfHcT9NJ_JAqM-sMff7qj3Ooh89NUAcgLhHJ4JhmVvi4D5Ah424OdCgrYHd-778Cj7HUtNdT8DmBk_bfiow0aPWE574uzyV9F128prkhp_vXiFSr0msF0dsFkWsDADZRWhptcC8Ygshbzg0uqZ7iz0FpSkY32chHIoRidIM35xDMeZEnZtxLw");
-myHeaders.append("Authorization", "Bearer "+ access_token+"")
+    */
+/*
+    console.log(access_token);
+    var myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Content-Type", "application/json");
+    //myHeaders.append("Authorization", "Bearer AQDqQTqOYNlaLsMl71kCt_kNb_7NwNUbqmToidxlF1jK4ARMPErLevNDbOGxIDjc7NrVkYKNEdUyyWfHcT9NJ_JAqM-sMff7qj3Ooh89NUAcgLhHJ4JhmVvi4D5Ah424OdCgrYHd-778Cj7HUtNdT8DmBk_bfiow0aPWE574uzyV9F128prkhp_vXiFSr0msF0dsFkWsDADZRWhptcC8Ygshbzg0uqZ7iz0FpSkY32chHIoRidIM35xDMeZEnZtxLw");
+    myHeaders.append("Authorization", "Bearer "+ access_token+"")
 
-//console.log(myHeaders);
+    //console.log(myHeaders);
 
-//var formdata = new FormData();
+    //var formdata = new FormData();
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders
-}
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders
+    }
 
 fetch(`https://api.spotify.com/v1/users/12134389136/playlists/6aWCids1nh2qsIiuZwwAEO/tracks?uris=${trackID}`, requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+.then(response => response.text())
+.then(result => console.log(result))
+.catch(error => console.log('error', error));
+*/
 }
