@@ -1,7 +1,7 @@
 //import 'dotenv/config';
 
-var client_id = '0202f1ce31ba462ea36be15731c8ec2f'
-var client_secret = '2088e9dcb8c64af2a9473938b3355f58'
+var client_id = ''
+var client_secret = ''
 
 var stringEncoded = btoa(client_id + ':' + client_secret);
 
@@ -43,6 +43,8 @@ const getAccessToken = async () => {
 
     // Ejecución de las Peticiones
     
+    searchTracks(requestOptions);
+
     searchArtists(requestOptions);
 
 }
@@ -55,15 +57,55 @@ const urlParams = new URLSearchParams(queryString);
 
 const query = urlParams.get('q')
 
+const searchTracks = async (requestOptions) => {
+    const response = await fetch(`${API}/search/?q=${query}&type=track&limit=12`, requestOptions);
+    const dataSearchTracks = await response.json();
+
+    const tracksAPP = document.getElementById("tracks");
+
+    const objetoVacio = (obj) => {
+        if (Object.entries(obj.album.images).length === 0){   
+            return "assets/images/unknow-artists.jpg";
+        }
+        else {
+            return obj.album.images[0].url;
+        }
+    }
+
+    let viewSearchTracks = `
+        ${dataSearchTracks.tracks.items.map(
+            (i) => 
+                `
+                <div class="col-md-6 col-xl-2">
+                    <div class="card"> 
+                        <img class="card-img-top img-fluid" src="${objetoVacio(i)}" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title"><a href="${i.album.external_urls.spotify}" target="_blank">${i.album.name}</a></h4>
+                            <p class="card-text"></p>
+                            <p></p>
+                            <video width="160" height="20" controls="" name="media">
+                                <source src="${i.preview_url}" type="audio/mpeg">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                `
+        ).join('')}
+    `
+
+    tracksAPP.innerHTML = viewSearchTracks;
+
+}
+
 const searchArtists = async (requestOptions) => {
-    const response = await fetch(`${API}/search/?q=${query}&type=track%2Cartist&limit=12`, requestOptions);
+    const response = await fetch(`${API}/search/?q=${query}&type=artist&limit=12`, requestOptions);
     const dataSearchArtists = await response.json();
 
     const artistsAPP = document.getElementById("artists");
 
     const objetoVacio = (obj) => {
         if (Object.entries(obj.images).length === 0){   
-            return false   
+            return "assets/images/unknow-artists.jpg";
         }
         else {
             return obj.images[0].url;
@@ -78,10 +120,9 @@ const searchArtists = async (requestOptions) => {
                     <div class="card"> 
                         <img class="card-img-top img-fluid" src="${objetoVacio(i)}" alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="${i.external_urls.spotify}" target="_blank"></a></h4>
-                            <p class="card-text">${i.name}</p>
-                            <p>${objetoVacio(i)}</p>
-                            <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#standard-modal">Ver Album</a> 
+                            <h4 class="card-title"><a href="${i.external_urls.spotify}" target="_blank">${i.name}</a></h4>
+                            <p class="card-text"></p>
+                            <p></p>
                         </div>
                     </div>
                 </div>

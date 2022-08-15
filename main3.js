@@ -1,7 +1,7 @@
 //import 'dotenv/config';
 
-var client_id = '0202f1ce31ba462ea36be15731c8ec2f'
-var client_secret = '2088e9dcb8c64af2a9473938b3355f58'
+var client_id = ''
+var client_secret = ''
 
 var stringEncoded = btoa(client_id + ':' + client_secret);
 
@@ -93,7 +93,7 @@ const getLastRelease = async (requestOptions) => {
 
                 <div class="col-md-6 col-xl-2">
                     <div class="card"> 
-                        <img class="card-img-top img-fluid" src="${i.images[0].url}" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="${i.images[0].url}" heigth="640" alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title"><a href="${i.artists[0].external_urls.spotify}" target="_blank">${i.artists[0].name}</a></h4>
                             <p class="card-text">${i.name}</p>
