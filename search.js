@@ -1,7 +1,7 @@
 //import 'dotenv/config';
 
-var client_id = ''
-var client_secret = ''
+var client_id = '0202f1ce31ba462ea36be15731c8ec2f'
+var client_secret = '2088e9dcb8c64af2a9473938b3355f58'
 
 var stringEncoded = btoa(client_id + ':' + client_secret);
 
@@ -80,7 +80,7 @@ const searchTracks = async (requestOptions) => {
                     <div class="card"> 
                         <img class="card-img-top img-fluid" src="${objetoVacio(i)}" alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="${i.album.external_urls.spotify}" target="_blank">${i.album.name}</a></h4>
+                            <h4 class="card-title"><a href="${i.album.external_urls.spotify}" target="_blank">${i.album.name} - ${i.name}</a></h4>
                             <p class="card-text"></p>
                             <p></p>
                             <video width="160" height="20" controls="" name="media">
@@ -118,7 +118,7 @@ const searchArtists = async (requestOptions) => {
                 `
                 <div class="col-md-6 col-xl-2">
                     <div class="card"> 
-                        <img class="card-img-top img-fluid" src="${objetoVacio(i)}" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="${objetoVacio(i)}" alt="${i.name}">
                         <div class="card-body">
                             <h4 class="card-title"><a href="${i.external_urls.spotify}" target="_blank">${i.name}</a></h4>
                             <p class="card-text"></p>
