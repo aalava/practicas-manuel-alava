@@ -1,7 +1,7 @@
 //import 'dotenv/config';
 
-var client_id = '0202f1ce31ba462ea36be15731c8ec2f'
-var client_secret = '2088e9dcb8c64af2a9473938b3355f58'
+var client_id = ''
+var client_secret = ''
 
 var stringEncoded = btoa(client_id + ':' + client_secret);
 
